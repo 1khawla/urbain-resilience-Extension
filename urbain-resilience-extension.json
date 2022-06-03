@@ -1,0 +1,197 @@
+{
+  "type": "CityJSONExtension",
+  "name": "resilience",
+  "description": "Extension to model the urbain resilience",
+  "uri": "https://github.com/1khawla/resilience.git",
+  "version": "1.0",
+  "versionCityJSON": "1.1",
+  "definitions": {
+    "temperature": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": -40,
+              "maximum": 60
+            },
+            "uom": {
+              "enum": [
+                "°C",
+                "feet"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "uom"
+          ]
+        },
+        {
+          "type": "number",
+          "minimum": -40,
+          "maximum": 60
+        }
+      ]
+    },
+    "humidity": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "uom": {
+              "enum": [
+                "%",
+                "feet"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "uom"
+          ]
+        },
+        {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      ]
+    },
+    "flood": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uom": {
+              "enum": [
+                "mm",
+                "feet"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "uom"
+          ]
+        },
+        {
+          "type": "number",
+          "minimum": 0
+        }
+      ]
+    },
+    "green-infrastructure": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "uom": {
+              "enum": [
+                "m2",
+                "feet2"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "uom"
+          ]
+        },
+        {
+          "type": "number",
+          "minimum": 0
+        }
+      ]
+    },
+    "ground-nature": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string",
+              "the-ground-is": [ "clayey", "loamy", "humiferous", "siliceous", "limestone", "sandy" ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "value"
+          ]
+        },
+        {
+          "type": "string",
+          "the-ground-is": [ "clayey", "loamy", "humiferous", "siliceous", "limestone", "sandy" ]
+        }
+      ]
+    },
+    "type-of-materials": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string",
+              "matérials-are": [ "resistant", "less resistant" ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "value"
+          ]
+        },
+      {
+        "type": "string",
+        "the-ground-is": [ "resistant", "less resistant" ]
+      }
+      ]
+  },
+  "extraRootProperties": {},
+  "extraAttributes": {
+    "Building": {
+      "+resilience": {
+        "type": "object",
+        "properties": {
+          "set1": {
+            "$ref": "#/definitions/temperature"
+          },
+          "set2": {
+            "$ref": "#/definitions/humidity"
+          },
+          "set3": {
+            "$ref": "#/definitions/flood"
+          },
+          "set4": {
+            "$ref": "#/definitions/green-infrastructure"
+          },
+          "set5": {
+            "$ref": "#/definitions/ground-nature"
+          },
+          "set6": {
+            "$ref": "#/definitions/type-of-materials"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "extraCityObjects": {}
+}
