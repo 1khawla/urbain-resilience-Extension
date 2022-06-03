@@ -2,7 +2,7 @@
   "type": "CityJSONExtension",
   "name": "resilience",
   "description": "Extension to model the urbain resilience",
-  "uri": "https://github.com/1khawla/resilience.git",
+  "uri": "https://github.com/1khawla/urbain-resiliance-Extension/blob/main/urbain-resilience-extension.json",
   "version": "1.0",
   "versionCityJSON": "1.1",
   "definitions": {
